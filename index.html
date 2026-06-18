@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ary ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="card" id="card">
+        <div class="heart" onclick="chuvaDeCoracoes(30)">💖</div>
+        
+        <h1>Alerta de fofura 🥵😈</h1>
+        <div class="subtitle">🌸 um convite especial 🌸</div>
+        <div class="emoji-big">🌷</div>
+
+        <div class="question" id="pergunta">
+            🥺 Quer sair comigo Madame?
+        </div>
+
+        <div class="btn-group" id="botoes">
+            <button class="btn btn-sim" id="btnSim" onclick="resposta('sim')">
+                💕 Sim, quero muito!
+            </button>
+            <button class="btn btn-talvez" id="btnTalvez" onmouseover="fugir(this)" onclick="recusar()">
+                🤔 Talvez… me convence
+            </button>
+            <button class="btn btn-nao" id="btnNao" onmouseover="fugir(this)" onclick="recusar()">
+                😅 Não por agora
+            </button>
+        </div>
+
+        <div class="input-area" id="inputArea">
+            <div class="data-section">
+                <label>📅 Escolha um dia:</label>
+                <input type="date" id="dataEscolhida" min="" />
+                <div class="dias-rapidos">
+                    <span>Ou escolha rápido:</span>
+                    <div class="botoes-dias">
+                        <button class="btn-dia" onclick="setarData(1)">Amanhã</button>
+                        <button class="btn-dia" onclick="setarData(2)">+2 dias</button>
+                        <button class="btn-dia" onclick="setarData(3)">+3 dias</button>
+                        <button class="btn-dia" onclick="setarData(7)">+1 semana</button>
+                    </div>
+                </div>
+            </div>
+
+            <label>Se for para xingar, xinga ae: </label>
+            <textarea id="mensagem" placeholder="Diz o que você está sentindo... 💕"></textarea>
+            
+            <button class="btn-enviar" onclick="enviarWhatsApp()">
+                <span>📱</span> Enviar no WhatsApp
+            </button>
+        </div>
+
+        <div class="msg-sucesso" id="msgSucesso">
+            ✅ Enviado com prazer! Vou ver sua resposta no Whats madame. 😍
+        </div>
+
+        <div class="footer-note">
+            💗 clique no coração para espalhar amor, pouca perna...
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
