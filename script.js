@@ -1,17 +1,20 @@
-const SEU_NUMERO = "5511999999999";
+const SEU_NUMERO = "67999217120";
 let escolha = "";
 let tentativasRecusa = 0;
+
 const frasesRecusa = [
     "🥺 Mas por que não?",
-    "💔 Pode ser meu ultimo dia vivo",
-    "🥰 Você sabe que quer...",
-    "😘 Vai, aceita!",
-    "💕 Eu prometo que vai ter alguma coisa para encher o pandú/barriguinha!",
+    "💔 Pode ser meu ultimo dia vivo...",
+    "🥰 Prometo que vai ter algo para encher o pandú...",
+    "😘 Fofoca também!",
+    "💕 Eu prometo que vai ser legal!",
     "🌷 Pensa bem...",
     "✨ Só um sim?",
-    "😳 Você é mó pitchulinha",
-    "💀 Proibido recusar pouca perna"
+    "😳 Você é tão pitchulinha heinn...",
+    "🔪 Se não aceitar vai ter sérios problemas"
 ];
+
+const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 document.addEventListener('DOMContentLoaded', function() {
     const hoje = new Date();
@@ -21,8 +24,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const dataMinima = `${ano}-${mes}-${dia}`;
     document.getElementById('dataEscolhida').setAttribute('min', dataMinima);
     setarData(1);
-    console.log('💕 Site da Ary carregado com fofura!');
+    console.log('💕 Site da Madame');
     setTimeout(() => chuvaDeCoracoes(6), 500);
+    
+    if (isMobile) {
+        document.getElementById('btnTalvez').onmouseover = null;
+        document.getElementById('btnNao').onmouseover = null;
+        document.getElementById('btnTalvez').style.transition = 'none';
+        document.getElementById('btnNao').style.transition = 'none';
+    }
 });
 
 function setarData(diasAdicionar) {
@@ -35,9 +45,11 @@ function setarData(diasAdicionar) {
 }
 
 function fugir(botao) {
+    if (isMobile) return;
+    
     if (botao.style.position !== 'fixed') {
         botao.style.position = 'relative';
-        botao.style.transition = 'all 0.2s ease';
+        botao.style.transition = 'all 0.15s ease';
     }
     
     const card = document.getElementById('card');
@@ -76,6 +88,30 @@ function fugir(botao) {
 }
 
 function recusar() {
+    if (isMobile) {
+        const btnSim = document.getElementById('btnSim');
+        btnSim.style.transform = 'scale(1.2)';
+        btnSim.style.boxShadow = '0 0 40px rgba(233, 30, 99, 0.6)';
+        setTimeout(() => {
+            btnSim.style.transform = 'scale(1)';
+            btnSim.style.boxShadow = 'none';
+        }, 500);
+        
+        const frases = [
+            '🥺 Não tem como fugir!',
+            '😘 Só tem o SIM!',
+            '💕 Aceita logo!',
+            '🌷 Você sabe que quer!'
+        ];
+        document.getElementById('pergunta').textContent = frases[Math.floor(Math.random() * frases.length)];
+        setTimeout(() => {
+            document.getElementById('pergunta').textContent = '🥺 Quer sair comigo?';
+        }, 2000);
+        
+        chuvaDeCoracoes(15);
+        return;
+    }
+    
     const botoes = document.getElementById('botoes');
     const btnSim = document.getElementById('btnSim');
     botoes.style.animation = 'shaking 0.5s ease';
@@ -109,10 +145,10 @@ const styleShaking = document.createElement('style');
 styleShaking.textContent = `
     @keyframes shaking {
         0%, 100% { transform: translateX(0); }
-        20% { transform: translateX(-20px) rotate(-5deg); }
-        40% { transform: translateX(20px) rotate(5deg); }
-        60% { transform: translateX(-10px); }
-        80% { transform: translateX(10px); }
+        20% { transform: translateX(-15px) rotate(-3deg); }
+        40% { transform: translateX(15px) rotate(3deg); }
+        60% { transform: translateX(-8px); }
+        80% { transform: translateX(8px); }
     }
 `;
 document.head.appendChild(styleShaking);
@@ -152,7 +188,7 @@ function enviarWhatsApp() {
     const data = document.getElementById('dataEscolhida').value;
     
     if (!mensagem) {
-        alert('🔪 Escreve algo ai cabeçuda, pode xingar, mas é paia né!');
+        alert('🤬 Escreve algo, cabeçuda');
         return;
     }
     
@@ -160,7 +196,7 @@ function enviarWhatsApp() {
     const emojiData = data ? '📅' : '❓';
     
     const texto = 
-`*🎀 MINHA RESPOSTA🎀*
+`*🎀 MINHA RESPOSTA 🎀*
 
 *Escolha:* ${escolha.toUpperCase()}
 ${emojiData} *Dia:* ${dataFormatada}
@@ -173,7 +209,7 @@ ${mensagem}`;
     
     const msgSucesso = document.getElementById('msgSucesso');
     msgSucesso.style.display = 'block';
-    msgSucesso.innerHTML = '✅ Enviado com carinho! Vou ver sua resposta no WhatsApp. 😍';
+    msgSucesso.innerHTML = '✅ Enviado com prazer! Vou ver sua resposta no Whats madame.';
     
     document.querySelector('.btn-enviar').style.display = 'none';
     document.getElementById('mensagem').disabled = true;
@@ -190,7 +226,7 @@ function chuvaDeCoracoes(quantidade = 10) {
             heart.className = 'hearts-fall';
             heart.textContent = emojis[Math.floor(Math.random() * emojis.length)];
             heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.fontSize = (18 + Math.random() * 32) + 'px';
+            heart.style.fontSize = (16 + Math.random() * 28) + 'px';
             heart.style.animationDuration = (3 + Math.random() * 4) + 's';
             document.body.appendChild(heart);
             setTimeout(() => heart.remove(), 7000);
