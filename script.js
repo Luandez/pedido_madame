@@ -123,8 +123,8 @@ function recusar() {
     const frases = [
         '🥺 Não tem como fugir!',
         '😘 Só tem o SIM!',
-        '💕 Aceita logo!',
-        '🌷 Você sabe que quer!'
+        '🔪 perigo!',
+        '⚠️ Cuidado'
     ];
     document.getElementById('pergunta').textContent = frases[Math.floor(Math.random() * frases.length)];
     setTimeout(() => {
@@ -163,7 +163,7 @@ function resposta(opcao) {
     document.getElementById('botoes').style.display = 'none';
     document.getElementById('inputArea').style.display = 'block';
     const textarea = document.getElementById('mensagem');
-    textarea.placeholder = `Você escolheu: ${nomes[opcao]}. O que mais quer me dizer? 💌`;
+    textarea.placeholder = `Você escolheu: ${nomes[opcao]}.`;
     textarea.focus();
     chuvaDeCoracoes(8);
 }
