@@ -204,7 +204,7 @@ ${emojiData} *Dia:* ${dataFormatada}
 *Mensagem:*
 ${mensagem}`;
     
-    const url = `https://wa.me/${67999217120}?text=${encodeURIComponent(texto)}`;
+    const url = `https://wa.me/${SEU_NUMERO}?text=${encodeURIComponent(texto)}`;
     window.open(url, '_blank');
     
     const msgSucesso = document.getElementById('msgSucesso');
