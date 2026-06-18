@@ -100,8 +100,8 @@ function recusar() {
         const frases = [
             '🥺 Não tem como fugir!',
             '😘 Só tem o SIM!',
-            '💕 Aceita logo!',
-            '🌷 Você sabe que quer!'
+            '⚠️ CUIDADO!',
+            '🔪 PERIGO!'
         ];
         document.getElementById('pergunta').textContent = frases[Math.floor(Math.random() * frases.length)];
         setTimeout(() => {
